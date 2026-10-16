@@ -1,0 +1,14 @@
+{
+  "name": "deep-reverse-workspace",
+  "version": "0.2.0",
+  "private": true,
+  "scripts": {
+    "postinstall": "npm --prefix apps/web install",
+    "install:web": "npm --prefix apps/web install",
+    "dev": "npm --prefix apps/web run dev",
+    "build": "npm --prefix apps/web run build",
+    "start": "npm --prefix apps/web run start",
+    "lint": "npm --prefix apps/web run lint",
+    "local-agent": "node apps/local-agent/server.mjs"
+  }
+}
