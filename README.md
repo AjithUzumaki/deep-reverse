@@ -1,13 +1,12 @@
 # DEEP REVERSE
 
-A multimodal general-purpose AI assistant platform — chat, coding with
-sandboxed execution, verified mathematics, vision, document intelligence,
-data analysis, and (in later phases) image generation and voice.
+A full-stack AI assistant with persistent chat, provider routing, Python,
+JavaScript, Java, and C# code execution, math and data tools, image and video
+features, and a local project workspace.
 
-This repo is being built in phases; see `docs/ARCHITECTURE.md` for the
-full plan. **Current: Ring 1 Phase 1** — real auth, a real database, and
-now real streaming chat against a live AI provider, with conversation
-history that survives a reload.
+The project is under active development. The current build includes account
+authentication, saved conversations, provider-backed chat, and the tools
+listed below. See `docs/ARCHITECTURE.md` for the broader design and roadmap.
 
 ## What actually works right now
 
@@ -25,20 +24,18 @@ history that survives a reload.
   recorded per message, and a provider abstraction (`packages/ai_core/`)
   so swapping or adding a provider later doesn't touch the routes or the
   frontend
-- A minimal login/register/chat UI (no design system yet — that's a
-  later phase) that actually works end to end
+- A Next.js app with chat, a project workspace, website previews, and a video
+  studio
 - Run Code for Python, JavaScript, Java, and C#, with common Python data,
   science, spreadsheet, and plotting libraries
 - CI: lint, typecheck, migration run, unit + API tests
 
-## What is not built yet (on purpose)
+## Work in progress
 
-The full orchestrator (intent routing, planning, verification), tool registry,
-fully isolated code sandbox, math engine, vision, document/data analysis, image
-generation, web research, structured memory, and voice are all specified
-in `docs/ARCHITECTURE.md` but not implemented. There are no placeholder
-endpoints for them — an unbuilt feature simply doesn't exist in the API
-yet, per the project's own no-fake-features rule.
+Richer task planning and verification, production-grade code isolation, web
+research, long-term memory across conversations, and voice are still being
+developed. Image and video generation depend on the configured providers and
+their credentials.
 
 ## Architecture
 
@@ -163,13 +160,12 @@ packages/
   db/       SQLAlchemy models + Alembic migrations
   auth/     Password hashing, JWT/refresh token logic
   shared/   Config, logging, error types (used by api + worker)
-  ai_core/  Orchestrator — empty until Ring 1 Phase 2
+  ai_core/  Provider routing and assistant tools
 docs/       Architecture, API, database, security docs
 ```
 
 ## Roadmap
 
-See `docs/ARCHITECTURE.md` §10 for the full 10-phase Ring 1 build order.
-Next up: **Phase 2** — the orchestrator: intent classification, tool
-registry, model routing, and task persistence. This is the piece that
-turns "a chat app" into "an assistant that plans and verifies."
+See `docs/ARCHITECTURE.md` §10 for the development roadmap. The codebase has
+grown beyond the initial scaffold described by some of that planning material;
+the feature list above reflects the current application.
